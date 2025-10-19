@@ -16,7 +16,7 @@ while (run):
             run = False
 
         if (event.type == pygame.KEYDOWN):
-            Snake.Move(pygame.key.name(event.key))
+            Snake.СhangeCourse(pygame.key.name(event.key))
             
         
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -25,12 +25,13 @@ while (run):
             print(f"Позиция мыши: {my_pos}")
             print(f"Идентификатор кнопки мыши: {my_button}")
     
+    Snake.Move()
 
     screen.fill((0, 0, 0))
     Draw.Snake(screen, Snake.bodyPart)
     pygame.display.flip()
 
-    pygame.time.delay(60)
+    pygame.time.delay(1000)
     
     
 
