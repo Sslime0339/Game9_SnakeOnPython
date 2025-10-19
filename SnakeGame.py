@@ -5,7 +5,17 @@ import pygame
 
 pygame.init()
 
-screen = pygame.display.set_mode((600, 600))
+Draw.sizeCell = 20
+Draw.sizeSnake = 18
+
+Snake.widthMap = 30
+Snake.hightMap = 30
+
+screen = pygame.display.set_mode((Snake.widthMap * Draw.sizeCell, Snake.hightMap * Draw.sizeCell))
+
+
+Snake.bodyPart = [[15, 15], [15, 16], [15, 17]]
+
 
 run = True
 

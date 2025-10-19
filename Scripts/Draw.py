@@ -1,8 +1,8 @@
 import pygame
 
 
-sizeCell = 20
-sizeSnake = 18
+sizeCell = 0
+sizeSnake = 0
 
 
 

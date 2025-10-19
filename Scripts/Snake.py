@@ -1,3 +1,4 @@
+from turtle import width
 import pygame
 
 
@@ -6,7 +7,8 @@ import pygame
 bodyPart = [[0, 0], [0, -1], [0, -2]]
 Course = [0, -1]
 
-
+widthMap = 0
+hightMap = 0
 
 
 
