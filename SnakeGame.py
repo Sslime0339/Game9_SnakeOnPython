@@ -1,6 +1,19 @@
 from Scripts import Draw
 
 
+import pygame
+
+pygame.init()
+
+screen = pygame.display.set_mode((600, 600))
+
+run = True
 
 
-Draw.Draw()
+while (run):
+    for event in pygame.event.get():
+        if (event.type == pygame.QUIT):
+            run = False
+
+
+pygame.quit()
