@@ -13,11 +13,10 @@ Snake.hightMap = 30
 
 screen = pygame.display.set_mode((Snake.widthMap * Draw.sizeCell, Snake.hightMap * Draw.sizeCell))
 
-
-Snake.bodyPart = [[15, 15], [15, 16], [15, 17]]
-
+Snake.NewGame()
 
 run = True
+IsPause = False
 
 
 while (run):
@@ -27,16 +26,21 @@ while (run):
 
         if (event.type == pygame.KEYDOWN):
             Snake.СhangeCourse(pygame.key.name(event.key))
-            
+
+            if (event.key == pygame.K_ESCAPE):
+                IsPause = not IsPause
         
-    
-    Snake.Move()
+    if not IsPause:
+        Snake.Move()
 
     screen.fill((0, 0, 0))
+    Draw.Apple(screen, Snake.Apple)
     Draw.Snake(screen, Snake.bodyPart)
+    if IsPause:
+        Draw.Pause(screen)
     pygame.display.flip()
 
-    pygame.time.delay(1000)
+    pygame.time.delay(800)
     
     
 
