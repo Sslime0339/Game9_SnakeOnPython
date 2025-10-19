@@ -1,5 +1,3 @@
-
-from ast import Global
 import pygame
 
 
