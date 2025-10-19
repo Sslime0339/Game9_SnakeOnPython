@@ -29,11 +29,6 @@ while (run):
             Snake.СhangeCourse(pygame.key.name(event.key))
             
         
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            my_pos = event.pos
-            my_button = event.button
-            print(f"Позиция мыши: {my_pos}")
-            print(f"Идентификатор кнопки мыши: {my_button}")
     
     Snake.Move()
 

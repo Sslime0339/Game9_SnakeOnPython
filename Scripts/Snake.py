@@ -32,6 +32,5 @@ def Move():
         else:
             bodyPart[0][0] += Course[0]
             bodyPart[0][1] += Course[1]
-        print(f"{i}: {bodyPart[i][0]} {bodyPart[i][1]}")
     
     
