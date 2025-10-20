@@ -8,6 +8,8 @@ bodyPart = [[0, 0], [0, -1], [0, -2]]
 Course = [0, -1]
 LastPosition = list(bodyPart[-1])
 
+Length = 0
+
 widthMap = 0
 hightMap = 0
 
@@ -21,8 +23,9 @@ def NewApple():
 
 
 def NewGame():
-    global bodyPart, Course
+    global bodyPart, Length, Course
     bodyPart = [[15, 15], [15, 16], [15, 17]]
+    Length = 3
     Course = [0, -1]
 
     NewApple()
@@ -41,7 +44,7 @@ def СhangeCourse(course):
 
 
 def Move():
-    global bodyPart
+    global bodyPart, Length
     LastPosition = list(bodyPart[-1])
     for i in range(len(bodyPart) - 1, -1, -1):
         if i != 0:
@@ -52,6 +55,7 @@ def Move():
     
     if bodyPart[0] == Apple:
         bodyPart += [list(LastPosition)]
+        Length += 1
         NewApple()
 
     if IsDeath():

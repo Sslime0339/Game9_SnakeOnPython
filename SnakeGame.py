@@ -36,7 +36,7 @@ while (run):
     screen.fill((0, 0, 0))
     Draw.Apple(screen, Snake.Apple)
     Draw.Snake(screen, Snake.bodyPart)
-    Draw.Score(screen, 600)
+    Draw.Score(screen, Snake.Length)
     if IsPause:
         Draw.Pause(screen)
     pygame.display.flip()
