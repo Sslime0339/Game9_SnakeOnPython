@@ -33,3 +33,12 @@ def Pause(screen):
     # Отображаем поверхность на экране
     screen.blit(my_surface, (50, 50))
     
+
+def Score(screen, score):
+    Text(screen, score, (450, 15))
+
+
+def Text(screen, text, position, sizeText=50, color=(255, 255, 255)):
+    font = pygame.font.SysFont('couriernew', sizeText)
+    renderText = font.render(str(text), True, color)
+    screen.blit(renderText, position)
