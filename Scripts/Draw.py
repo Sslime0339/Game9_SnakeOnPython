@@ -35,7 +35,15 @@ def Pause(screen):
     
 
 def Score(screen, score):
-    Text(screen, score, (450, 15))
+    Text(screen, score, (400, 15))
+
+def MaxScore(screen, score):
+    #костыль для отрисовки слова длина
+    Text(screen, "длина:", (50, 15))
+
+    Text(screen, "максимальная", (50, 65))
+    Text(screen, "длина:", (50, 115))
+    Text(screen, score, (400, 115))
 
 
 def Text(screen, text, position, sizeText=50, color=(255, 255, 255)):

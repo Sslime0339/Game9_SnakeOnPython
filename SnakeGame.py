@@ -2,6 +2,7 @@ from Scripts import Draw
 from Scripts import Snake
 
 import pygame
+import os
 
 pygame.init()
 
@@ -12,6 +13,21 @@ Snake.widthMap = 30
 Snake.hightMap = 30
 
 screen = pygame.display.set_mode((Snake.widthMap * Draw.sizeCell, Snake.hightMap * Draw.sizeCell))
+
+#загрузка
+if not os.path.exists("Save"):
+    os.mkdir("Save")
+
+maxScore = 0
+if os.path.exists("Save/Score.txt"):
+    SaveFile = open("Save/Score.txt", "r")
+    line = SaveFile.readline()
+    if line != "":
+        maxScore = int(line)
+
+SaveFile.close()
+#====
+
 
 Snake.NewGame()
 
@@ -32,12 +48,14 @@ while (run):
         
     if not IsPause:
         Snake.Move()
+        maxScore = max(maxScore, Snake.Length)
 
     screen.fill((0, 0, 0))
     Draw.Apple(screen, Snake.Apple)
     Draw.Snake(screen, Snake.bodyPart)
     Draw.Score(screen, Snake.Length)
     if IsPause:
+        Draw.MaxScore(screen, maxScore)
         Draw.Pause(screen)
     pygame.display.flip()
 
@@ -46,5 +64,15 @@ while (run):
     
 
 
+#сохранение
+if not os.path.exists("Save"):
+    os.mkdir("Save")
+
+if os.path.exists("Save/Score.txt"):
+    SaveFile = open("Save/Score.txt", "w")
+    SaveFile.write(str(maxScore))
+
+SaveFile.close()
+#====
 
 pygame.quit()
