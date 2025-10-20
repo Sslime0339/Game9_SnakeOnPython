@@ -31,7 +31,7 @@ def Pause(screen):
     my_surface.set_alpha(128)
 
     # Отображаем поверхность на экране
-    screen.blit(my_surface, (50, 50))
+    screen.blit(my_surface, (275, 275))
     
 
 def Score(screen, score):
