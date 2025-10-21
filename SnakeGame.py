@@ -25,7 +25,7 @@ if os.path.exists("Save/Score.txt"):
     if line != "":
         maxScore = int(line)
 
-SaveFile.close()
+    SaveFile.close()
 #====
 
 
@@ -68,9 +68,9 @@ while (run):
 if not os.path.exists("Save"):
     os.mkdir("Save")
 
-if os.path.exists("Save/Score.txt"):
-    SaveFile = open("Save/Score.txt", "w")
-    SaveFile.write(str(maxScore))
+
+SaveFile = open("Save/Score.txt", "w")
+SaveFile.write(str(maxScore))
 
 SaveFile.close()
 #====
