@@ -82,7 +82,6 @@ class Snake(GameObject):
     def IsDeath(self):
         for i in range(1, len(self.bodyPart)):
             if self.bodyPart[0].Position == self.bodyPart[i].Position:
-                print(f'{i} : {self.bodyPart[0].Position}, {self.bodyPart[i].Position}')
                 return True
         if self.bodyPart[0].Position.x < 0 or self.bodyPart[0].Position.x >= self.gameMap.widthMap \
         or self.bodyPart[0].Position.y < 0 or self.bodyPart[0].Position.y >= self.gameMap.hightMap:

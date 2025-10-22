@@ -1,6 +1,6 @@
 from Scripts import Draw
 from Scripts.Snake import Snake
-from Scripts.Apple import Apple
+from Scripts.Apple import Apple, NewApple
 from Scripts.Vector2D import Vector2D
 from Scripts.GameMap import GameMap
 
@@ -16,6 +16,7 @@ Draw.sizeSnake = 18
 
 gameMap = GameMap(30, 30)
 gameMap.NewGame()
+
 
 screen = pygame.display.set_mode((gameMap.widthMap * Draw.sizeCell, gameMap.hightMap * Draw.sizeCell))
 

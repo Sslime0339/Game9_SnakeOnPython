@@ -1,7 +1,6 @@
 
 from Scripts import Draw
-from Scripts.Apple import Apple
-from Scripts.Apple import NewApple
+from Scripts.Apple import Apple, NewApple
 from Scripts.GameObject import GameObject
 from Scripts.Snake import Snake
 from Scripts.SnakeBodyPart import SnakeBodyPart
@@ -27,6 +26,8 @@ class GameMap:
         self.GameObjects.clear()
         self.snake = Snake(self)
         NewApple(self)
+        for i in range(5):
+            NewApple(self)
 
 
     # def CreatGameObject(self, object : GameObject):
@@ -51,7 +52,6 @@ class GameMap:
     
     def DrawObjects(self, screen):
         for obj in self.GameObjects:
-            print(obj)
             if isinstance(obj, SnakeBodyPart):
                 Draw.SnakeBodyPart(screen, obj.Position)
             elif isinstance(obj, Apple):

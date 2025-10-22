@@ -46,7 +46,6 @@ class Vector2D:
         return Vector2D(self.x + other.x, self.y + other.y)
     
     def __eq__(a, b):
-        print(((a.x == b.x) and (a.y == b.y)))
         return ((a.x == b.x) and (a.y == b.y))
     
     def __ne__(a, b):
