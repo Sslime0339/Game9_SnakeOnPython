@@ -2,7 +2,7 @@ from Scripts import Draw
 from Scripts.Snake import Snake
 from Scripts.Apple import Apple
 from Scripts.Vector2D import Vector2D
-from Scripts.Map import Map
+from Scripts.GameMap import GameMap
 
 import pygame
 import os
@@ -12,12 +12,12 @@ pygame.init()
 Draw.sizeCell = 20
 Draw.sizeSnake = 18
 
-snake = Snake()
 
-snake.widthMap = 30
-snake.hightMap = 30
 
-screen = pygame.display.set_mode((snake.widthMap * Draw.sizeCell, snake.hightMap * Draw.sizeCell))
+gameMap = GameMap(30, 30)
+gameMap.NewGame()
+
+screen = pygame.display.set_mode((gameMap.widthMap * Draw.sizeCell, gameMap.hightMap * Draw.sizeCell))
 
 #загрузка
 if not os.path.exists("Save"):
@@ -34,7 +34,7 @@ if os.path.exists("Save/Score.txt"):
 #====
 
 
-snake.NewGame()
+# snake.NewGame()
 
 run = True
 IsPause = False
@@ -46,19 +46,20 @@ while (run):
             run = False
 
         if (event.type == pygame.KEYDOWN):
-            snake.СhangeCourse(pygame.key.name(event.key))
+            gameMap.snake.СhangeCourse(pygame.key.name(event.key))
 
             if (event.key == pygame.K_ESCAPE):
                 IsPause = not IsPause
         
     if not IsPause:
-        snake.Move()
-        maxScore = max(maxScore, snake.Length)
+        gameMap.snake.Move()
+        maxScore = max(maxScore, gameMap.snake.Length)
 
     screen.fill((0, 0, 0))
-    Draw.Apple(screen, snake.Apple)
-    Draw.Snake(screen, snake.bodyPart)
-    Draw.Score(screen, snake.Length)
+    
+    gameMap.DrawObjects(screen)
+
+    Draw.Score(screen, gameMap.snake.Length)
     if IsPause:
         Draw.MaxScore(screen, maxScore)
         Draw.Pause(screen)

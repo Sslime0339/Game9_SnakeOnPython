@@ -12,6 +12,11 @@ def Snake(screen, snake):
         r = pygame.Rect((Position[0]*sizeCell + indentation, Position[1]*sizeCell + indentation), (sizeSnake, sizeSnake))
         pygame.draw.rect(screen, (0, 255, 0), r, 0)
 
+def SnakeBodyPart(screen, Position):
+    indentation = 0.5*(sizeCell - sizeSnake)
+    r = pygame.Rect((Position[0]*sizeCell + indentation, Position[1]*sizeCell + indentation), (sizeSnake, sizeSnake))
+    pygame.draw.rect(screen, (0, 255, 0), r, 0)
+
 
 def Apple(screen, Position):
     indentation = 0.5*(sizeCell - sizeSnake)

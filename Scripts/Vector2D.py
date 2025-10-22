@@ -6,6 +6,10 @@ class Vector2D:
     x = 0
     y = 0
 
+
+    def new(self):
+        return Vector2D(self.x, self.y)
+
     
     def __init__(self, x=0, y=0):
         '''создание вектора'''
@@ -35,6 +39,18 @@ class Vector2D:
     def __iadd__(a, b):
         a.x += b.x
         a.y += b.y
+        return a
+    
+    # Сложение a + b
+    def __add__(self, other):
+        return Vector2D(self.x + other.x, self.y + other.y)
+    
+    def __eq__(a, b):
+        print(((a.x == b.x) and (a.y == b.y)))
+        return ((a.x == b.x) and (a.y == b.y))
+    
+    def __ne__(a, b):
+        return not a == b
     
     # преобразовать в строку
     def __str__(self):
