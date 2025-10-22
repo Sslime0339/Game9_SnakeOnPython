@@ -1,11 +1,24 @@
 from Scripts.GameObject import GameObject
 from Scripts.Vector2D import Vector2D
+# from Scripts.GameMap import GameMap
 
 import random
 
 
 def NewApple(gameMap):
-    Apple(gameMap, Vector2D(random.randint(0, gameMap.widthMap-1), random.randint(0, gameMap.hightMap-1)))
+    newPosition = Vector2D(random.randint(0, gameMap.widthMap-1), random.randint(0, gameMap.hightMap-1))
+    
+    # не оптимизированно
+    # cells = [Vector2D(x, y) for x in range(gameMap.widthMap) for y in range(gameMap.hightMap)]
+
+    # for obj in gameMap.GameObjects:
+    #     if obj.Position in cells:
+    #         cells.remove(obj.Position)
+
+    # if len(cells) >= 1:
+    #     newPosition = cells[random.randint(0, len(cells) - 1)]
+
+    Apple(gameMap, newPosition)
 
 class Apple(GameObject):
 

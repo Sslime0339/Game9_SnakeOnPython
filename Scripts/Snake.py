@@ -25,7 +25,7 @@ class Snake(GameObject):
     # Apple = [0, 0]
 
     def __init__(self, gameMap):
-        super().__init__(gameMap, Vector2D(0,0))
+        super().__init__(gameMap, Vector2D(-1,0))
         self.Length = 3
         self.Course = Vector2D(0, -1)
         mapCenter = Vector2D(int(gameMap.widthMap/2), int(gameMap.hightMap/2))

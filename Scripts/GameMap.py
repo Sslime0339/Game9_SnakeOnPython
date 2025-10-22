@@ -26,7 +26,9 @@ class GameMap:
         self.GameObjects.clear()
         self.snake = Snake(self)
         NewApple(self)
-        for i in range(5):
+        for i in range(20):
+            # if i % 10 == 0:
+            #     print(i)
             NewApple(self)
 
 
