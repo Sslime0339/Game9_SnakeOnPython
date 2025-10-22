@@ -2,6 +2,7 @@ from Scripts import Draw
 from Scripts.Snake import Snake
 from Scripts.Apple import Apple
 from Scripts.Vector2D import Vector2D
+from Scripts.Map import Map
 
 import pygame
 import os
