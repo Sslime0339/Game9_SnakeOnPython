@@ -23,6 +23,13 @@ def Apple(screen, Position):
     r = pygame.Rect((Position[0]*sizeCell + indentation, Position[1]*sizeCell + indentation), (sizeSnake, sizeSnake))
     pygame.draw.rect(screen, (255, 0, 0), r, 0)
 
+def DrawEmptyPosition(screen, Position):
+    r = pygame.Rect((Position[0]*sizeCell, Position[1]*sizeCell), (5, 5))
+    pygame.draw.rect(screen, (150, 150, 150), r, 0)
+    pass
+
+
+
 
 def Pause(screen):
     my_surface = pygame.Surface((50, 50), pygame.SRCALPHA)

@@ -25,17 +25,16 @@ class Snake(GameObject):
     # Apple = [0, 0]
 
     def __init__(self, gameMap):
-        super().__init__(gameMap, Vector2D(-1,0))
+        mapCenter = Vector2D(int(gameMap.widthMap/2), int(gameMap.hightMap/2))
+        super().__init__(gameMap, mapCenter)
         self.Length = 3
         self.Course = Vector2D(0, -1)
-        mapCenter = Vector2D(int(gameMap.widthMap/2), int(gameMap.hightMap/2))
         if (gameMap.hightMap > 5):
-            self.bodyPart = [SnakeBodyPart(gameMap, mapCenter), 
-                             SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 1)), 
+            self.bodyPart = [SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 1)), 
                              SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 2))]
         else:
             self.Length = 1
-            self.bodyPart = [SnakeBodyPart(gameMap, mapCenter)]
+            self.bodyPart = []
             print("слишком маленькая карта")
 
 
@@ -67,10 +66,15 @@ class Snake(GameObject):
             if i != 0:
                 self.bodyPart[i].Position = self.bodyPart[i-1].Position.new()
             else:
-                self.bodyPart[0].Position += self.Course
-        
-        objectOfTouch = self.gameMap.CheckCollision(self.bodyPart[0])
+                self.bodyPart[0].Position = self.Position.new()
 
+        newPosition = self.Position + self.Course
+
+        objectOfTouch = self.gameMap.CheckCollision(newPosition)
+        
+        self.Position = newPosition.new()
+
+        
         if isinstance(objectOfTouch, Apple):
             self.bodyPart += [SnakeBodyPart(self.gameMap, lastPosition)]
             self.Length += 1
@@ -80,10 +84,10 @@ class Snake(GameObject):
             self.gameMap.NewGame()
 
     def IsDeath(self):
-        for i in range(1, len(self.bodyPart)):
-            if self.bodyPart[0].Position == self.bodyPart[i].Position:
+        for i in range(len(self.bodyPart)):
+            if self.Position == self.bodyPart[i].Position:
                 return True
-        if self.bodyPart[0].Position.x < 0 or self.bodyPart[0].Position.x >= self.gameMap.widthMap \
-        or self.bodyPart[0].Position.y < 0 or self.bodyPart[0].Position.y >= self.gameMap.hightMap:
+        if self.Position.x < 0 or self.Position.x >= self.gameMap.widthMap \
+        or self.Position.y < 0 or self.Position.y >= self.gameMap.hightMap:
             return True
         return False

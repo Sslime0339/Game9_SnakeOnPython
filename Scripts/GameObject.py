@@ -2,12 +2,31 @@ from Scripts.Vector2D import Vector2D
 # from Scripts.GameMap import GameMap
 
 class GameObject:
-    Position = Vector2D()
+    __Position = Vector2D()
     gameMap = 0
 
+    #свойства
+
+    #получить переменную
+    @property
+    def Position(self):
+        return self.__Position
+    
+    #присвоить значение переменной
+    @Position.setter
+    def Position(self, position):
+        lastPosition = self.__Position.new()
+        self.__Position = position
+        self.gameMap.TakeAPosition(position)
+        if (self.gameMap.CheckCollision(lastPosition) == None):
+            self.gameMap.VacatePosition(lastPosition)
+
+
+
     def __init__(self, gameMap, position):
-        self.Position = position
+        # важно сначала добавить карту
         self.gameMap = gameMap
+        self.Position = position
         self.gameMap.AddGameObject(self)
     
     def __str__(self):

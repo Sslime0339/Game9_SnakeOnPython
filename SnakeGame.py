@@ -59,6 +59,7 @@ while (run):
     screen.fill((0, 0, 0))
     
     gameMap.DrawObjects(screen)
+    # gameMap.DrawEmptyPosition(screen) # для отрисовки пустых клеток
 
     Draw.Score(screen, gameMap.snake.Length)
     if IsPause:
