@@ -18,8 +18,7 @@ class GameObject:
         lastPosition = self.__Position.new()
         self.__Position = position
         self.gameMap.TakeAPosition(position)
-        if (self.gameMap.CheckCollision(lastPosition) == None):
-            self.gameMap.VacatePosition(lastPosition)
+        self.gameMap.VacatePosition(lastPosition)
 
 
 

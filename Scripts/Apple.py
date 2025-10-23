@@ -6,7 +6,12 @@ import random
 
 
 def NewApple(gameMap):
-    newPosition = Vector2D(random.randint(0, gameMap.widthMap-1), random.randint(0, gameMap.hightMap-1))
+
+    if len(gameMap.EmptyPosition) > 0:
+        newPosition = gameMap.EmptyPosition[random.randint(0, len(gameMap.EmptyPosition)) - 1].new()
+        Apple(gameMap, newPosition)
+
+    # newPosition = Vector2D(random.randint(0, gameMap.widthMap-1), random.randint(0, gameMap.hightMap-1))
     
     # не оптимизированно
     # cells = [Vector2D(x, y) for x in range(gameMap.widthMap) for y in range(gameMap.hightMap)]
@@ -18,7 +23,6 @@ def NewApple(gameMap):
     # if len(cells) >= 1:
     #     newPosition = cells[random.randint(0, len(cells) - 1)]
 
-    Apple(gameMap, newPosition)
 
 class Apple(GameObject):
 

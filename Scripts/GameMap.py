@@ -31,7 +31,7 @@ class GameMap:
         self.EmptyPosition = [Vector2D(x, y) for x in range(self.widthMap) for y in range(self.hightMap)]
         self.snake = Snake(self)
         NewApple(self)
-        for i in range(20):
+        for i in range(10):
             # if i % 10 == 0:
             #     print(i)
             NewApple(self)
@@ -54,7 +54,10 @@ class GameMap:
 
     def VacatePosition(self, position):
         # позиция освободилась => в масив свобоных мест добавилась позиция
-        self.EmptyPosition.append(position)
+        if (self.CheckCollision(position) == None and
+            position.x >= 0 and position.x < self.widthMap and
+            position.y >= 0 and position.y < self.hightMap):
+            self.EmptyPosition.append(position)
     
     def TakeAPosition(self, position):
         # забирает позицию

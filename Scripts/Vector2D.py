@@ -11,7 +11,7 @@ class Vector2D:
         return Vector2D(self.x, self.y)
 
     
-    def __init__(self, x=0, y=0):
+    def __init__(self, x=-1, y=0):
         '''создание вектора'''
         self.x = x
         self.y = y
