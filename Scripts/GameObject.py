@@ -10,15 +10,15 @@ class GameObject:
     #получить переменную
     @property
     def Position(self):
-        return self.__Position
+        return Vector2D(self.__Position.x, self.__Position.y)
     
     #присвоить значение переменной
     @Position.setter
     def Position(self, position):
-        lastPosition = self.__Position.new()
+        # lastPosition = self.__Position.new()
         self.__Position = position
-        self.gameMap.TakeAPosition(position)
-        self.gameMap.VacatePosition(lastPosition)
+        # self.gameMap.TakeAPosition(position)
+        # self.gameMap.VacatePosition(lastPosition)
 
 
 

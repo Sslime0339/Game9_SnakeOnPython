@@ -17,6 +17,8 @@ snakeSpeed = 4 # клеток в секунду
 lastGameTime = 0
 # gameTime = 0
 
+showFPS = pygame.time.Clock()
+
 
 gameMap = GameMap(30, 30)
 gameMap.NewGame()
@@ -72,6 +74,9 @@ while (run):
     # gameMap.DrawEmptyPosition(screen) # для отрисовки пустых клеток
 
     Draw.Score(screen, gameMap.snake.Length)
+
+    # showFPS.tick()
+    # Draw.FPS(screen, showFPS.get_fps())
     if IsPause:
         Draw.MaxScore(screen, maxScore)
         Draw.Pause(screen)

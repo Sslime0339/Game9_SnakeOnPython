@@ -8,7 +8,8 @@ import random
 def NewApple(gameMap):
 
     if len(gameMap.EmptyPosition) > 0:
-        newPosition = gameMap.EmptyPosition[random.randint(0, len(gameMap.EmptyPosition)) - 1].new()
+        newPosition = gameMap.EmptyPosition[random.randint(0, len(gameMap.EmptyPosition)) - 1]
+        gameMap.EmptyPosition.remove(newPosition)
         Apple(gameMap, newPosition)
 
     # newPosition = Vector2D(random.randint(0, gameMap.widthMap-1), random.randint(0, gameMap.hightMap-1))

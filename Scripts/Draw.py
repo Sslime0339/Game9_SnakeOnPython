@@ -44,7 +44,11 @@ def Pause(screen):
 
     # Отображаем поверхность на экране
     screen.blit(my_surface, (275, 275))
-    
+
+
+def FPS(screen, fps):
+    Text(screen, fps, (400, 400))
+
 
 def Score(screen, score):
     Text(screen, score, (400, 15))

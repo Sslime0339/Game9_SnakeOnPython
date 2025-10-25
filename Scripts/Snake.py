@@ -27,11 +27,15 @@ class Snake(GameObject):
     def __init__(self, gameMap):
         mapCenter = Vector2D(int(gameMap.widthMap/2), int(gameMap.hightMap/2))
         super().__init__(gameMap, mapCenter)
+        self.gameMap.EmptyPosition.remove(mapCenter) # удалить свободную клетку там где появляется змейка
+        
         self.Length = 3
         self.Course = Vector2D(0, -1)
         if (gameMap.hightMap > 5):
             self.bodyPart = [SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 1)), 
                              SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 2))]
+            self.gameMap.EmptyPosition.remove(mapCenter+Vector2D(0, 1)) # удалить свободную клетку там где появляется змейка
+            self.gameMap.EmptyPosition.remove(mapCenter+Vector2D(0, 2)) # удалить свободную клетку там где появляется змейка
         else:
             self.Length = 1
             self.bodyPart = []
@@ -61,27 +65,34 @@ class Snake(GameObject):
 
 
     def Move(self):
-        lastPosition = self.bodyPart[-1].Position.new()
+        lastPosition = self.bodyPart[-1].Position
         for i in range(len(self.bodyPart) - 1, -1, -1):
             if i != 0:
-                self.bodyPart[i].Position = self.bodyPart[i-1].Position.new()
+                self.bodyPart[i].Position = self.bodyPart[i-1].Position
             else:
-                self.bodyPart[0].Position = self.Position.new()
+                self.bodyPart[0].Position = self.Position
 
         newPosition = self.Position + self.Course
 
         objectOfTouch = self.gameMap.CheckCollision(newPosition)
         
-        self.Position = newPosition.new()
+        self.Position = newPosition
+
+
+
+        if self.IsDeath():
+            self.gameMap.NewGame()
+            return
 
         
         if isinstance(objectOfTouch, Apple):
             self.bodyPart += [SnakeBodyPart(self.gameMap, lastPosition)]
             self.Length += 1
             objectOfTouch.Eat()
+        else:
+            self.gameMap.EmptyPosition.remove(newPosition)
+            self.gameMap.EmptyPosition.append(lastPosition)
 
-        if self.IsDeath():
-            self.gameMap.NewGame()
 
     def IsDeath(self):
         for i in range(len(self.bodyPart)):
