@@ -41,9 +41,15 @@ class Vector2D:
         a.y += b.y
         return a
     
+
+    
     # Сложение a + b
     def __add__(self, other):
         return Vector2D(self.x + other.x, self.y + other.y)
+    
+    #вычитание a - b
+    def __sub__(self, other):
+        return Vector2D(self.x - other.x, self.y - other.y)
     
     def __eq__(a, b):
         return ((a.x == b.x) and (a.y == b.y))

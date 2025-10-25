@@ -76,8 +76,10 @@ class GameMap:
     
     def DrawObjects(self, screen):
         for obj in self.GameObjects:
-            if isinstance(obj, SnakeBodyPart) or isinstance(obj, Snake):
-                Draw.SnakeBodyPart(screen, obj.Position)
+            # if isinstance(obj, SnakeBodyPart) or isinstance(obj, Snake):
+            #     Draw.SnakeBodyPart(screen, obj.Position)
+            if isinstance(obj, Snake):
+                Draw.Snake(screen, obj)
             elif isinstance(obj, Apple):
                 Draw.Apple(screen, obj.Position)
     

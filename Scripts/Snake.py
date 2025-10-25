@@ -90,7 +90,7 @@ class Snake(GameObject):
 
         
         if isinstance(objectOfTouch, Apple):
-            self.bodyPart += [SnakeBodyPart(self.gameMap, lastPosition)]
+            self.bodyPart.append(SnakeBodyPart(self.gameMap, lastPosition))
             self.Length += 1
             objectOfTouch.Eat()
         else:

@@ -11,11 +11,12 @@ pygame.init()
 
 Draw.sizeCell = 20
 Draw.sizeSnake = 18
+Draw.eyeSize = 4
+Draw.distanceBetweenEyes = 4
 
 fps = 60
 snakeSpeed = 4 # клеток в секунду
 lastGameTime = 0
-# gameTime = 0
 
 showFPS = pygame.time.Clock()
 
