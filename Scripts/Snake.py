@@ -13,6 +13,7 @@ class Snake(GameObject):
 
     bodyPart = 0
     Course = 0
+    LastCourse = 0
 
     Length = 0
 
@@ -31,6 +32,7 @@ class Snake(GameObject):
         
         self.Length = 3
         self.Course = Vector2D(0, -1)
+        self.LastCourse = Vector2D(0, -1)
         if (gameMap.hightMap > 5):
             self.bodyPart = [SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 1)), 
                              SnakeBodyPart(gameMap, mapCenter+Vector2D(0, 2))]
@@ -54,13 +56,13 @@ class Snake(GameObject):
 
 
     def СhangeCourse(self, course):
-        if (course == "w"):
+        if (course == "w" and self.LastCourse != Vector2D(0, 1)):
             self.Course = Vector2D(0, -1)
-        if (course == "s"):
+        if (course == "s" and self.LastCourse != Vector2D(0, -1)):
             self.Course = Vector2D(0, 1)
-        if (course == "a"):
+        if (course == "a" and self.LastCourse != Vector2D(1, 0)):
             self.Course = Vector2D(-1, 0)
-        if (course == "d"):
+        if (course == "d" and self.LastCourse != Vector2D(-1, 0)):
             self.Course = Vector2D(1, 0)
 
 
@@ -73,6 +75,8 @@ class Snake(GameObject):
                 self.bodyPart[0].Position = self.Position
 
         newPosition = self.Position + self.Course
+
+        self.LastCourse = self.Course
 
         objectOfTouch = self.gameMap.CheckCollision(newPosition)
         
