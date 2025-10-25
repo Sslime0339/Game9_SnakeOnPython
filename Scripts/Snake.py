@@ -94,8 +94,8 @@ class Snake(GameObject):
             self.Length += 1
             objectOfTouch.Eat()
         else:
-            self.gameMap.EmptyPosition.remove(newPosition)
             self.gameMap.EmptyPosition.append(lastPosition)
+            self.gameMap.EmptyPosition.remove(newPosition)
 
 
     def IsDeath(self):
