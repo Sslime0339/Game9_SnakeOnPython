@@ -12,6 +12,10 @@ pygame.init()
 Draw.sizeCell = 20
 Draw.sizeSnake = 18
 
+fps = 60
+snakeSpeed = 4 # клеток в секунду
+lastGameTime = 0
+# gameTime = 0
 
 
 gameMap = GameMap(30, 30)
@@ -19,6 +23,8 @@ gameMap.NewGame()
 
 
 screen = pygame.display.set_mode((gameMap.widthMap * Draw.sizeCell, gameMap.hightMap * Draw.sizeCell))
+pygame.display.set_caption("Змейка")
+
 
 #загрузка
 if not os.path.exists("Save"):
@@ -51,10 +57,14 @@ while (run):
 
             if (event.key == pygame.K_ESCAPE):
                 IsPause = not IsPause
-        
+    
     if not IsPause:
-        gameMap.snake.Move()
-        maxScore = max(maxScore, gameMap.snake.Length)
+        time = pygame.time.get_ticks()
+        if time > (lastGameTime + 1000/snakeSpeed):
+            lastGameTime = time
+            #print(pygame.time.get_ticks())
+            gameMap.snake.Move()
+            maxScore = max(maxScore, gameMap.snake.Length)
 
     screen.fill((0, 0, 0))
     
@@ -67,7 +77,8 @@ while (run):
         Draw.Pause(screen)
     pygame.display.flip()
 
-    pygame.time.delay(800)
+
+    pygame.time.delay(int(1000/fps))
     
     
 
