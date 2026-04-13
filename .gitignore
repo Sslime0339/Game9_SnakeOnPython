@@ -1,2 +1,6 @@
 #моё сохранение
 Save/Score.txt
+
+
+# Byte-compiled
+__pycache__/
