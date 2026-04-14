@@ -4,3 +4,12 @@ Save/Score.txt
 
 # Byte-compiled
 __pycache__/
+
+
+
+# Локальные настройки проекта в вижуал студио код
+.vscode/*
+# Важные (наверное) настройки оставляем
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
