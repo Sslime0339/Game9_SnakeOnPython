@@ -1,5 +1,5 @@
 #моё сохранение
-Save/Score.txt
+Score.txt
 
 
 # Byte-compiled
@@ -13,3 +13,8 @@ __pycache__/
 !.vscode/launch.json
 !.vscode/tasks.json
 !.vscode/extensions.json
+
+
+# Промежуточные файлы от PyInstaller
+build/
+*.spec

@@ -1,22 +1,42 @@
+// для вижуал студио код
 {
     // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
     // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "Отладчик Python: текущий файл",
+            "name": "Запустить игру",
             "type": "debugpy",
             "request": "launch",
-            
             //"program": "${file}", // Запускает выбранный файл
-            
             // Запускаем главный файл, 
             // несмотря на то какой файл выбран
             "program": "${workspaceFolder}/SnakeGame.py",
-
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Собрать EXE (PyInstaller)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/BuilderExe.py",
             "console": "integratedTerminal"
         }
+        // , другой способ но через питон помоему лучше
+        // {
+        //     "name": "Собрать EXE (PyInstaller)",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "module": "PyInstaller",
+        //     "args": [
+        //         "--onefile",
+        //         "--noconsole",
+        //         "--distpath ${workspaceFolder}/build/SnakeGame",
+        //         "-n Змейка_Vtest",
+        //         "${workspaceFolder}/SnakeGame.py"
+        //         //--version-file FILE
+        //     ],
+        //     "console": "integratedTerminal"
+        // }
     ]
 }
